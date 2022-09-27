@@ -2,25 +2,24 @@
 
 namespace App\Commands;
 
-use App\Actions\Promos;
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
 
-class PromosCommand extends Command
+class LoopCommand extends Command
 {
     /**
      * The signature of the command.
      *
      * @var string
      */
-    protected $signature = 'exam:1';
-    protected $promos;
+    protected $signature = 'exam:3';
+
     /**
      * The description of the command.
      *
      * @var string
      */
-    protected $description = 'Check which promo is better';
+    protected $description = 'Loop over a json data';
 
     /**
      * Execute the console command.
@@ -29,18 +28,20 @@ class PromosCommand extends Command
      */
     public function handle()
     {
-        $promo_1['quantity'] = $this->ask('First promo quantity...');
-        $promo_1['price'] = $this->ask('First promo price...');
+        foreach ($this->data() as $data) {
+            $this->info(
+                $data->name . 
+                ' --> ' .  
+                $data->age .
+                ' --> ' .
+                $data->school
+            );
+        }
+    }
 
-        $promo_2['quantity'] = $this->ask('Second promo quantity...');
-        $promo_2['price'] = $this->ask('Second promo price...');
-
-        $result = Promos::make()
-                    ->addPromo($promo_1)
-                    ->addAnotherPromo($promo_2)
-                    ->evaluate();
-
-        $this->info($result);
+    public function data()
+    {
+        return   json_decode(file_get_contents('app/data/data.json'));
     }
 
     /**

@@ -13,7 +13,7 @@ class LeapYearCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'leapyear:check ';
+    protected $signature = 'exam:2';
 
     /**
      * The description of the command.
