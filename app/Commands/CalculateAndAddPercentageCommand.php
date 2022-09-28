@@ -30,16 +30,40 @@ class CalculateAndAddPercentageCommand extends Command
      */
     public function handle()
     {
-        $group = [4,1,4];
-        
-       
-        
+        $group = [16, 10, 8];
+        $lowest = min($group);
+
+        $final = [];
+        foreach ($group as $value) {
+            $final[] = ($value == $lowest)
+                ? $lowest + $this->getTotal($group)
+                : $value - $this->getPercentage($value);
+        }
+
+        $this->info('INPUT: ' . implode(',', $group));
+        $this->info('OUTPUT: ' . implode(',', $final));
     }
 
-    public function remove25PercentAndAddToLowest($value, $lowest)
+    public function getPercentage($value, $percentage = .25)
     {
-        return ($value * .25) + $lowest;
+        return $value * $percentage;
     }
+
+    public function getTotal($array)
+    {
+        $result = 0;
+        $lowest = min($array);
+
+        foreach ($array as $value) {
+            if ($value != $lowest) {
+                $result += $this->getPercentage($value);
+            }
+        }
+
+        return $result;
+    }
+
+
     /**
      * Define the command's schedule.
      *
