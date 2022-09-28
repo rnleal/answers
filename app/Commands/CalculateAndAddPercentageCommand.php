@@ -19,9 +19,7 @@ class CalculateAndAddPercentageCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Remove 25% from every number in the
-    list except the smallest number, and adds the total amount removed to the smallest
-    number.';
+    protected $description = 'Remove 25% from every number in the list except the smallest number, and adds the total amount removed to the smallest number.';
 
     /**
      * Execute the console command.
@@ -30,6 +28,9 @@ class CalculateAndAddPercentageCommand extends Command
      */
     public function handle()
     {
+        $this->info($this->description);
+        $this->info('see ' . get_class($this) . '.php');
+        $this->info('');
         $group = [16, 10, 8];
         $lowest = min($group);
 

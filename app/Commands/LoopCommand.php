@@ -28,6 +28,10 @@ class LoopCommand extends Command
      */
     public function handle()
     {
+        $this->info($this->description);
+        $this->info('see ' . get_class($this) . '.php');
+        $this->info('');
+        
         foreach ($this->data() as $data) {
             $this->info(
                 $data->name . 

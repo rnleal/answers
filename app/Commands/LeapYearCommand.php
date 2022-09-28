@@ -29,6 +29,9 @@ class LeapYearCommand extends Command
      */
     public function handle()
     {
+        $this->info($this->description);
+        $this->info('see ' . get_class($this) . '.php');
+        
         $year = $this->ask('Enter a year');
 
        $this->info('Input: ' . $year);

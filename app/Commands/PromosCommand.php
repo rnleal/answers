@@ -29,6 +29,9 @@ class PromosCommand extends Command
      */
     public function handle()
     {
+        $this->info($this->description);
+        $this->info('see ' . get_class($this) . '.php');
+        
         $promo_1['quantity'] = $this->ask('First promo quantity...');
         $promo_1['price'] = $this->ask('First promo price...');
 

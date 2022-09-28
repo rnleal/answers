@@ -28,7 +28,9 @@ class SplitStringToIdenticalCharsCommand extends Command
      */
     public function handle()
     {
-        $this->info('This will split the numbers into identical clusters');
+        $this->info($this->description);
+        $this->info('see ' . get_class($this) . '.php');
+
         $input = $this->ask('Enter random numbers...');
 
         $arr = str_split($input);

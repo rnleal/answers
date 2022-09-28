@@ -28,6 +28,9 @@ class RemoveDuplicateCommand extends Command
      */
     public function handle()
     {
+        $this->info($this->description);
+        $this->info('see ' . get_class($this) . '.php');
+        
         $sentence = $this->choice('Choose sentence to test', [
             'Ana? Why is wrong??????',
             'Ana! Why is wrong!!!!'

@@ -28,6 +28,9 @@ class CountAlphaDigits extends Command
      */
     public function handle()
     {
+        $this->info($this->description);
+        $this->info('see ' . get_class($this) . '.php');
+        
        $string = $this->ask('Enter a string');
 
        $this->info('Input: ' . $string);
